@@ -1,0 +1,16 @@
+For "Autobooting using first file form bootflash:"
+    You need to update the config-register.  0x2101 will boot into the first file found.  0x2102 will use the boot system command you have set.
+
+    conf t
+
+    config-register 0x2102
+
+    end
+
+    write mem
+
+    That will update it to use your boot system command.
+
+ROMMON:
+
+boot tftp://<tftp_server>/srv/tftp/<image_name>

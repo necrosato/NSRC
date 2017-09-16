@@ -1,0 +1,26 @@
+NOTE: THIS WORKS FOR CISCO ag1141 ap AS WELL
+
+login: Cisco
+password: Cisco
+
+> en
+# debug capwap console cli
+# debug capwap cli no-reload
+# conf t
+# ip default-gateway <tftp_server_ip>
+# int bVI 1
+# ip address <ip_address> <subnet_mask>
+# end
+# archive download-sw /overwrite /force-reload tftp://<tftp_server_ip>/<image_path>
+
+
+// FROM ap: prompt
+
+ap: set IP_ADDR <ip_address>
+ap: set NETMASK <subnet_mask>
+ap: set DEFAULT_ROUTER <tftp_server_ip>
+ap: tftp_init
+ap: tar -xtract tftp://<tftp_server_ip>/<image_path> flash:
+ap: set BOOT flash:<image_dir>/<image_path>
+ap: boot
+

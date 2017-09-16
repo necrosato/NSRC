@@ -1,0 +1,19 @@
+localhost login: admin
+
+> en
+# copy running-config flash:/cfg_old
+# copy usb1:<image_path> flash:
+# delete flash:<old_image_path>
+# install source flash:<image_path> reload
+
+//TO SET ADMIN PASSWORD
+# conf t
+# username <user> secret <password>
+
+// TO MAKE MGMT PUBLIC
+# conf t
+# ip route 0.0.0.0/0 <public_gateway>
+# int ma1
+# ip address dhcp
+# end
+
