@@ -1,18 +1,18 @@
 For image upgrade:
-en
-conf t
-ip default-gateway 10.0.0.1
-int vlan 1
-ip address 10.0.0.2 255.255.255.0
-no shut
-end
-copy tftp://10.0.0.4/<image_name>
-wr erase
-conf t
-boot system flash bootflash:<image_name>
-config-register 0x2102
-write mem
-reload
+    en
+    conf t
+    ip default-gateway 10.0.0.1
+    int vlan 1
+    ip address 10.0.0.2 255.255.255.0
+    no shut
+    end
+    copy tftp://10.0.0.4/<image_name>
+    wr erase
+    conf t
+    boot system flash bootflash:<image_name>
+    config-register 0x2102
+    write mem
+    reload
 
 For "Autobooting using first file form bootflash:"
     You need to update the config-register.  0x2101 will boot into the first file found.  0x2102 will use the boot system command you have set.
@@ -33,3 +33,8 @@ set interface fa1 10.0.0.2 255.255.255.0
 set ip route default 10.0.0.1
 set TftpServer 10.0.0.4
 boot tftp://<tftp_server>/srv/tftp/<image_name>
+
+Novemeber, 2017:
+
+image: cat4500e-entservicesk9-mz.152-4.E4.bin
+rommon: cat4500-e-ios-promupgrade-122_44r_SG11
