@@ -1,7 +1,7 @@
 localhost login: admin
 
 > en
-# copy running-config flash:/cfg_old
+# copy running-config flash:cfg_old
 # copy usb1:<image_path> flash:
 # delete flash:<old_image_path>
 # install source flash:<image_path> reload
