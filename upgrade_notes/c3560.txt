@@ -1,3 +1,12 @@
 https://supportforums.cisco.com/t5/lan-switching-and-routing/cisco-switch-2960-3560-gt-password-recovery-and-factory-default/td-p/2064791
 
-c3560e-universalk9-mz.122-40.SE/c3560e-universalk9-mz.122-40.SE.bin
+Current image as of January 12th, 2018: c3560e-universalk9-mz.152-4.E5.bin
+
+For installation of a new image from a working image:
+
+
+
+For installation of a new image from the ROMMON:
+
+
+
