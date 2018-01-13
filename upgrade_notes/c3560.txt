@@ -4,9 +4,53 @@ Current image as of January 12th, 2018: c3560e-universalk9-mz.152-4.E5.bin
 
 For installation of a new image from a working image:
 
+    > en
+    # conf t
+    (config)# ip default-gateway 10.0.0.1
+    (config)# int vlan 1
+    (config-if)# ip address 10.0.0.2 255.255.255.0
+    (config-if)# no shut
+    (config-if)# end
+    # copy scp: flash:
+        10.0.0.4
+        pi
+        /home/pi/c3560e-universalk9-mz.152-4.E5.bin
+        c3560e-universalk9-mz.152-4.E5.bin
+    # conf t
+    (config)# no boot system
+    (config)# boot system flash:c3560e-universalk9-mz.152-4.E5.bin
+    (config)# end
+    # wr memory
+    # reload
 
+        NOTE: Microcode must update the first time the switch boots with a new image. This takes 30-45 minutes and seems scary; never fear.
 
 For installation of a new image from the ROMMON:
 
+        To get into the ROMMON, follow the below instructions found at 
+            https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2950-series-switches/41845-192.html
+
+        Unplug the power cord.
+        Hold down the MODE button while you reconnect the power cable to the switch.
+        The MODE button is on the left side of the front panel.
+        Release the MODE button after the LED that is above Port 1x goes out.
+        Note: The LED position can vary slightly, which depends on the model.
+        You are now at the switch: prompt.
+
+    switch: flash_init
+    switch: set BAUD 115200
+
+        $ screen -S serial /dev/ttyUSB0 115200
+            Now restart screen
+        
+    switch: copy xmodem: flash:c3560e-universalk9-mz.152-4.E5.bin
+
+
+        To start xmodem transfer with GNU screen and sx (lrzsz package):
+            press Ctrl-a (screen escape sequence) followed by ':' and type
+                exec !! sx c3560e-universalk9-mz.152-4.E5.bin
+            NOTE: This can take up to 2 hours. 
+        
+    switch: boot flash:c3560e-universalk9-mz.152-4.E5.bin
 
 
