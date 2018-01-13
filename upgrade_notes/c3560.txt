@@ -23,7 +23,8 @@ For installation of a new image from a working image:
     # wr memory
     # reload
 
-        NOTE: Microcode must update the first time the switch boots with a new image. This takes 30-45 minutes and seems scary; never fear.
+        NOTE: Microcode must update the first time the switch boots with a new image.
+              This takes 30-45 minutes, and may seem scary; never fear.
 
 For installation of a new image from the ROMMON:
 
@@ -47,10 +48,17 @@ For installation of a new image from the ROMMON:
 
 
         To start xmodem transfer with GNU screen and sx (lrzsz package):
-            press Ctrl-a (screen escape sequence) followed by ':' and type
+            press Ctrl-a (the GNU screen escape sequence) followed by ':' and type
                 exec !! sx c3560e-universalk9-mz.152-4.E5.bin
-            NOTE: This can take up to 2 hours. 
+            NOTE: This can take over five hours; get comfortable.
         
     switch: boot flash:c3560e-universalk9-mz.152-4.E5.bin
 
+    > en
+    # conf t
+    (config)# no boot system
+    (config)# boot system flash:c3560e-universalk9-mz.152-4.E5.bin
+    (config)# end
+    # wr memory
+    # reload
 
