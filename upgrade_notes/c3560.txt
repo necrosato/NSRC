@@ -46,7 +46,6 @@ For installation of a new image from the ROMMON:
         
     switch: copy xmodem: flash:c3560e-universalk9-mz.152-4.E5.bin
 
-
         To start xmodem transfer with GNU screen and sx (lrzsz package):
             press Ctrl-a (the GNU screen escape sequence) followed by ':' and type
                 exec !! sx c3560e-universalk9-mz.152-4.E5.bin
@@ -55,6 +54,15 @@ For installation of a new image from the ROMMON:
     switch: boot flash:c3560e-universalk9-mz.152-4.E5.bin
 
     > en
+    # conf t
+    (config)# line con 0
+    (config-line)# speed 9600
+
+        $ screen -S serial /dev/ttyUSB0 9600
+            Now restart screen again
+
+    (config-line)# end
+
     # conf t
     (config)# no boot system
     (config)# boot system flash:c3560e-universalk9-mz.152-4.E5.bin
