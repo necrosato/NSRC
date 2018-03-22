@@ -1,0 +1,16 @@
+# HOW TO CHANGE THE INTERFACE NAMES ON UBUNTU SERVER 16.04
+# edit /etc/default/grub, change 
+
+GRUB_CMDLINE_LINUX=""
+
+# to 
+
+GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"
+
+# then 
+
+sudo update-grub 
+sudo reboot now
+
+# this renames the interfaces to eth* and wlan*
+

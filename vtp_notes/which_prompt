@@ -1,0 +1,5 @@
+The following sections I found to be slightly ambiguous in regards to which command prompt should be used,
+i.e. vtp image, individual lxc container within the vtp image, or dynagen screen within the vtp image
+
+## VLAN problems
+# Linux containers

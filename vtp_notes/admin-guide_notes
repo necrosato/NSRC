@@ -1,0 +1,20 @@
+## Importing router configs:
+
+    There is no:
+
+        /etc/dynamips/default/ 
+
+            or
+
+        /etc/dynamips/ssh_snmp/
+
+    import /all default and import /all ssh_snmp wont work
+
+    More explanation is needed explain the checkpoint system
+
+    For example, we can run 
+
+    import /all l3-4-nat
+    reload /all
+
+    Then we have to reconnect to the screen session
