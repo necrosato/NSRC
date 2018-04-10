@@ -1,0 +1,216 @@
+TODO:
+    With 6 groups, running out of memory when loading /etc/dynamips/l3-4-nat into dynagen (12.2 G out of 14 allocated for VM kills dynagen)
+    Decision:
+        run less pods ||
+        run different configuration || 
+    For less pods, we can use routers-5e.net or routers-6.net
+        sudo ln -fs routers-5e.net routers.net 
+
+
+VTP revisions:
+TODO: 
+        Create a dynamips configuration for NMM from l3-4-nat of the CNDO image
+
+    TODO:
+        Explain how routers.net is a sym link to one of the *.net configs in /etc/dynamips
+        By default, it is routers-6e.net, e is for with edge devices, no e is without
+
+    TODO:
+        Explain how to calculate which lxc containers to start, i.e. not always 1...36, depends on group number
+        container # depends on both student count and group count
+
+    TODO:
+        Instructions on how to reset the kit after use:
+            Make decision: create new backup store for qcow (copy on write || resetting the vms)
+                If resetting the vm: need way to keep packages up to date
+                    If containers outdated, updates may cripple system (cpu & wan bandwidth)
+                    If updated on the fly, incompatibilities may arise from updates and excercises.
+                 
+            reset lxd containers to gold - this may be implicit on vm reset
+
+            I see the gold container when I run `lxc list` but there are no reset instructions.
+    TODO:
+        commit d3985d0645107c86b19072fdee91f9dbe0ce9663
+        There are no instructions to put ftp://ftp.cisco.com/pub/mibs/v2/CISCO-ENVMON-MIB.my into the www lxc container
+            
+NMM revisions:     
+
+    TODO:
+        remove all references to db.campusy.ws.nsrc.org from the nmm exercises 
+    TODO: decision
+        commit a6bac24d718a3002c631c50da5e78ea496a1ee5d
+        document how to get nfsen in www lxc container || rebuild vtp to have it included in container from beginning
+    TODO:
+        commit a6bac24d718a3002c631c50da5e78ea496a1ee5d
+        There is no www lxc: /var/www/html/downloads, only /var/www/html/"Campus Network Design & Operations"/
+
+    TODO: 
+        Need for standard location for instructor notes,
+        Example: commit 4cfb47b1c410f589ddf26918fd7f037ae8a1f834
+            /netmgmt/en/netflow/netflow-plan.txt has instructions that need referencing or movement, should be in the master document
+
+    TODO: Typo : a/en/log-management/exercises-log-management-tenshi.md
+
+         Add the following to this file:
+        @@ -110,10 +112,11 @@ Configure Tenshi to send you alarms when the routers are configured (COPY
+         and PASTE this text):
+         
+         ~~~
+        -# nano /etc/tenshi/includes-available/network
+        +# edit /etc/tenshi/includes-available/network^M
+         ~~~
+         
+        -Add the following to this file:
+        +Add the following to this file **but** be sure you substitue your campus number for "Y" ^M
+        +in the second "goup_host" defintion below:^M
+         
+    TODO: 
+        rename librenms-lab.md to excercise-librenms.md
+
+    TODO: commit c67407cfe3300c4a6824725ddec4767a2d16023d
+        in en/librenms/librenms-lab.md lines 123 and 124
+        line 144 remove "ie your virtual host"
+        There is no rtr1.ws.nsrc.org, and change IP address to proper subnet
+        move **NOTE** for commands to above the actual command
+        line 209, join sentences
+        Revise "Customize your installation" instructions
+        line 270, hans cannot tolerate the non-english
+        line 287, backup -> back up
+        line 295, select select -> select
+        Normalize creating an alert instuctions, quoting tab names are an issue
+        line 337, extra space in quote
+        line 342, looked -> look
+        line 444, "You must put latitude and longitude for each network device into the snmp sysLocation variable."
+
+COMMITS:
+
+    DONE
+    ~~~~
+
+    commit 6177f4944b5231193da261c5cec5d7b5810b2fff
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Fri Feb 23 01:01:33 2018 +0545
+
+        Updated of RT exercises for new host names - including all associated diagrams.
+      
+            
+    commit a6bac24d718a3002c631c50da5e78ea496a1ee5d
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Thu Feb 22 13:41:00 2018 +0545
+
+        Making sure we have this available somewhere. nfsen is in downloads and socket6-patch is in netflow
+
+
+    commit 4cfb47b1c410f589ddf26918fd7f037ae8a1f834
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Thu Feb 22 13:39:19 2018 +0545
+
+        Added instructor note for BigFile creation
+
+
+    commit ad03d2f2acb2a4312b9cacb9e8b7c41ba66876af
+    Author: Hans Kuhn <hans@nsrc.org>
+    Date:   Thu Feb 22 13:28:15 2018 +0545
+
+        updates for current hostnames
+
+
+    commit 732c10f5397cc8b3a88ae69acee505665e2c450a
+    Author: Hans Kuhn <hans@nsrc.org>
+    Date:   Thu Feb 22 13:27:33 2018 +0545
+
+        updated for current IP space
+
+    commit 228b2e0277a45d3d7f63892d637e10f6995ef872
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Thu Feb 22 13:25:41 2018 +0545
+
+        Verified addreses are correct, added a new group_host stanza to our rulest and,
+        hopefully, made it more obvious that this is a group exercise.
+
+
+    commit 8406fa383327777080786f936d44380aad1ad6d7
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Wed Feb 21 15:09:54 2018 +0545
+
+        Updated for current topology device names
+
+    commit 6f23067d1f2ef720b181e2bd5bfa4acf5026e4d0
+    Author: Hans Kuhn <hans@nsrc.org>
+    Date:   Wed Feb 21 13:24:57 2018 +0545
+
+        changed refs from db => srv1 to match current naming
+
+
+    commit 61f099fafbca8ac91eb2bbe18ff68954e03fefe1
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Wed Feb 21 13:23:55 2018 +0545
+
+        Removed the routers.db and /etc/mailname items as they are now clean and good. Kept the rancid
+        jitter for cron job bit and updated all the hosts in the tables to be current. Added a title!
+
+
+    commit 9e724eb9778972d967d2c836b8f19dc5b4ca2499
+    Author: Hans Kuhn <hans@nsrc.org>
+    Date:   Wed Feb 21 13:11:19 2018 +0545
+
+        fixed host references to match current topology
+
+
+    commit 5e7ef3252a49ac1320a6fab5364aaae0ccea48b0
+    Author: Hans Kuhn <hans@nsrc.org>
+    Date:   Wed Feb 21 11:04:46 2018 +0545
+
+        changed target names to match current topology
+
+
+    commit c67407cfe3300c4a6824725ddec4767a2d16023d
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Tue Feb 20 18:25:38 2018 +0545
+
+        Added a full LibreNMS Alert exercises. We have removed the section to copy
+        over the default LibreNMS cron file to /etc/cron.d/librenms as this overwrites
+        our perfectly staggered and simplified cron jobs for LibreNMS. This bit us pretty
+        hard! :-)
+
+    commit d3985d0645107c86b19072fdee91f9dbe0ce9663
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Tue Feb 20 06:32:36 2018 +0545 
+        Minor tweak to make it clear where to add the CISCO MIBS statement in /etc/snmp/snmp.conf and as snmpd is partially installed on srv1.campusY noted you need to complete sections 3 and 7 to 7.1 for it to be functional (for snmp3) and to respond to queries.
+
+
+    commit 4cbf99fb28a6031263800babe1a5d66e7610189e
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Tue Feb 20 06:16:06 2018 +0545
+
+        Serversssssssssss...
+
+
+    commit cb0be5a927c4e990850c81eec921388e76af8bb6
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Tue Feb 20 05:58:00 2018 +0545
+
+        Taking a compromise path for now. We shall revisit this to finalize how we want to deal
+        with localhost. Removed localhost references from the hostgroups file, but did not
+        remote the device entry. Did not exclue the student's server from hostgroup entries. Also, changed the parent relationshiops that transitN.nren's parent is bdr1.campusY and bdr1.campusY has not parent as traffic flows to the Nagios instance from bdr1.
+
+    commit bfee06679c6478f6bf22feb05e166399d1314c8b
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Mon Feb 19 14:59:46 2018 +0545
+
+        A whole, whole, whole lotta changes. Exercises should be saner for working with current cndo topology.
+
+    commit 274897398fb25e48f62687acfe38ab464249add5
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Mon Feb 19 03:57:25 2018 +0545
+
+        Found "db" entries and replaced. These exercises look confusing. Will review some more.
+
+
+    commit a21dab34bcc0c0260c472c1032f242ff719f7d8e
+    Author: Hervey Allen <hervey@nsrc.org>
+    Date:   Mon Feb 19 03:30:14 2018 +0545
+
+        Lots of formatting cleanup. Dealing with sha1 issues.
+
+    ~~~~
