@@ -1,0 +1,2 @@
+The readme.txt claims that this excercise needs updating. 
+Because the installation instructions were in a power point, I could not view them. Also, and this could be because of the previous point, I could not understand the md files.

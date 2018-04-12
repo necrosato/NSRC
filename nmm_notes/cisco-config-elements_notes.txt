@@ -1,0 +1,5 @@
+Decision:
+    Retire hp-config-elements.ppt
+
+ISSUE:
+    Could not telnet into any devices to set up ssh, password not found in any md files.
