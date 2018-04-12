@@ -11,7 +11,8 @@ VTP revisions:
 TODO: 
         Create a dynamips configuration for NMM from l3-4-nat of the CNDO image
     TODO: global search and replace "cndlab" to "nmmlab"
-        perl -e -pi "cndlab" "nmmlab"
+
+        perl -pi -e 's/cndlab/nmmlab/gi' /etc/dynamips/l3-4-nat/*
 
     TODO:
         Explain how routers.net is a sym link to one of the *.net configs in /etc/dynamips

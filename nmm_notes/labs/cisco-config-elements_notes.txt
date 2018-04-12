@@ -3,3 +3,6 @@ Decision:
 
 ISSUE:
     Could not telnet into any devices to set up ssh, password not found in any md files.
+        Resolution: look in /etc/dynamips/
+
+    To ssh into dynamips images, first we must ssh into ubuntu@vtp.ws.nsrc.org, because we changed the ssd clients config (/etc/ssh/ssh_config) 
