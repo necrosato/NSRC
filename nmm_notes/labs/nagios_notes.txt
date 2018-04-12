@@ -1,0 +1,8 @@
+Note:
+    "Log in to your virtual machine" is really "Log in to your lxd container"
+    The container must be started before anything can be done, this is NOT the nmm vm.
+
+TODO:
+    "You may skip to step 3."
+    There is no "step 3" this is meant to be the third command, 
+        $ sudo systemctl enable apache2
