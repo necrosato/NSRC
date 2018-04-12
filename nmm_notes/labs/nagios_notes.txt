@@ -2,6 +2,14 @@ Note:
     "Log in to your virtual machine" is really "Log in to your lxd container"
     The container must be started before anything can be done, this is NOT the nmm vm.
 
+Note:
+    To log into containers:
+        username: sysadm
+        password: nsrc+ws
+    To log into nagios:
+        username: nagiosadmin
+        password: nsrc+ws
+
 TODO:
     "You may skip to step 3."
     There is no "step 3" this is meant to be the third command, 
@@ -9,3 +17,5 @@ TODO:
 
 Question:
     transit1 ssh seems to be down when monitoring ssh service
+
+    
