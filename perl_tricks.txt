@@ -1,0 +1,23 @@
+
+To replace text in a set of files
+
+perl -pi -e 's/"what youre lookin' for"/"replace with"/gi' "name of file/s"
+
+So, to replace "cndlab" with "nmmlab" across a bunch of config file:
+
+perl -pi -e 's/cndlab/nmmlab/gi' *
+
+Now, to replace a heinous string like "</<" with </H3> in all .html files in
+directory do the following...
+
+perl -pi -e 's/<\/</<\/H3>/gi' *.html
+
+Need to remove all those ^M characters from a DOS file? Try
+
+        tr -d \\r < dosfile > newfile
+
+Decode a base64 encoded file. Remove all headers and just act on the raw
+encoding for this to work:
+
+perl -MMIME::Base64 -ne 'print decode_base64($_)' < file.txt > out
+
