@@ -6,3 +6,6 @@ TODO:
     "You may skip to step 3."
     There is no "step 3" this is meant to be the third command, 
         $ sudo systemctl enable apache2
+
+Question:
+    transit1 ssh seems to be down when monitoring ssh service
