@@ -10,6 +10,12 @@ Note:
         username: nagiosadmin
         password: nsrc+ws
 
+Note:
+    on first apache2/nagios3 startup, do
+    sudo systemctl enable apache2
+    sudo systemctl enable nagios3
+    to make the services restart when the container restarts
+
 TODO:
     "You may skip to step 3."
     There is no "step 3" this is meant to be the third command, 
@@ -18,4 +24,5 @@ TODO:
 Question:
     transit1 ssh seems to be down when monitoring ssh service
 
-    
+Note:
+    srv1.campus1 must be added to the http hostgroup in hostgroups_nagios2.cfg    
