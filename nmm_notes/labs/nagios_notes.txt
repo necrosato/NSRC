@@ -26,3 +26,18 @@ Question:
 
 Note:
     srv1.campus1 must be added to the http hostgroup in hostgroups_nagios2.cfg    
+
+TODO:
+    Need to explain how to add
+'''
+define hostgroup {
+        hostgroup_name nagios-servers
+                alias           NAGIOS
+                members         localhost
+        }
+               
+'''
+    to /etc/nagios3/conf.d/hostgroups_nagios2.cfg in optional excercise XI for Nagios
+
+    I do not know what the guide means in the last step by invoking:
+        check_command               check_http_url_auth!/nagios3/!nagiosadmin:password
