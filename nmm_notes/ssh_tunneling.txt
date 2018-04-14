@@ -1,1 +1,5 @@
 $ ssh -L <port>:<IP of lxc>:80 nsrc@nsrc-test2.uoregon.edu
+
+To connect through my pi from home:
+
+$ ssh sauron@10.0.0.56 -L 8080:localhost:10005 ssh nsrc@nsrc-test2.uoregon.edu -L 10005:100.68.1.131:80
