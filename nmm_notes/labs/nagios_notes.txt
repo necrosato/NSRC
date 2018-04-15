@@ -27,16 +27,16 @@ Question:
 Note:
     srv1.campus1 must be added to the http hostgroup in hostgroups_nagios2.cfg    
 
-TODO:
+TODO: OPTIONAL EXCERCISE XI
     Need to explain how to add
-'''
-define hostgroup {
-        hostgroup_name nagios-servers
-                alias           NAGIOS
-                members         localhost
-        }
-               
-'''
+        '''
+        define hostgroup {
+                hostgroup_name nagios-servers
+                        alias           NAGIOS
+                        members         localhost
+                }
+                       
+        '''
     to /etc/nagios3/conf.d/hostgroups_nagios2.cfg in optional excercise XI for Nagios
     (I'm not even sure the above is correct, the documentation does not exist expllicitly for section XI, aka the 'hints')
     "... and of course you'll need to create a hostgroup called nagios-servers to link to this service check. (hint, /etc/nagios3/conf.d/hostgroups_nagios2.cfg) "
@@ -44,31 +44,36 @@ define hostgroup {
     I do not know what the guide means in the last step by invoking:
         check_command               check_http_url_auth!/nagios3/!nagiosadmin:password
 
-TODO:
     where does one put
-'''
-define command{
-        command_name    check_http_url_auth
-        command_line    /usr/lib/nagios/plugins/check_http -H '$HOSTADDRESS$' -u '$ARG1$' -a '$ARG2$'
-        }
-'''
+        '''
+        define command{
+                command_name    check_http_url_auth
+                command_line    /usr/lib/nagios/plugins/check_http -H '$HOSTADDRESS$' -u '$ARG1$' -a '$ARG2$'
+                }
+        '''
+
+    In part 2:
+        Incorrect hostnames for snmp-servers hostgroup
 
 
 TODO:
     Disk space plugin:
         Need to specify where to put the service 
-'''
+        '''
+
+        define service {
+                host_name                       noc
+                service_description             Disk space /
+                check_command                   check_hrstorage!NetManage!/!80!90
+                use                             generic-service
+                notification_interval           0
+        }
 
 
-define service {
-        host_name                       noc
-        service_description             Disk space /
-        check_command                   check_hrstorage!NetManage!/!80!90
-        use                             generic-service
-        notification_interval           0
-}
-
-'''
+        '''
         Should point to /etc/nagios3/conf.d/services_nagios2.cfg
+
+Note:
+    The Disk Space Plugin will not work until SNMP excercise has been completed, the steps are correct though
 
 
