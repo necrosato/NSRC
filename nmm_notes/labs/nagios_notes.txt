@@ -54,7 +54,10 @@ TODO: OPTIONAL EXCERCISE XI
 
     In part 2:
         Incorrect hostnames for snmp-servers hostgroup
+        cannot use noc in hostgroup snmp-servers, pre flight check throws an error
 
+    In part 3:
+        Fan service check failed once setup, plugin call timed out
 
 TODO:
     Disk space plugin:
@@ -75,5 +78,4 @@ TODO:
 
 Note:
     The Disk Space Plugin will not work until SNMP excercise has been completed, the steps are correct though
-
 
