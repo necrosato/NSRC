@@ -1,0 +1,53 @@
+Note:
+    When installing mysql-client and mysql-server, one is NOT asked to set a password for the root mysql user.
+    Furthermore, when one attempts to log into mysql with -uroot and -p as sudo, the password will prompt but accept any input.
+    On the contrary, when one attempts to log into mysql with -uroot and -p as sysadm, the password field will prompt but accept NO input.
+
+Note:
+    When attempting to create the libreNMS database, it appears that one already exists on srv1.campus1.ws.nsrc.org
+
+Note:
+    Even though I have followed the snmp excercise, I still had to add 'rocommunity NetManage' to /etc/snmp/snmpd.conf for srv1.campus1.ws.nsrc.org
+
+Note:
+    There is already a /opt/librnms folder; I am renaming it and recloning
+    After recloning, git tag gives no output
+
+Note:
+    When attempting to run install.php
+        Error: Missing dependencies, run: ./scripts/composer_wrapper.php install --no-dev
+    After recloning, I had to run 
+        # ./scripts/composer_wrapper.php install --no-dev
+    before running the web installer
+    
+Note:
+    When attempting to create the admin user from the web installer, it says that admin already exists. I used admin2.
+
+Note:
+    When verifying, there were many issues. I followed all suggestions from librenms to fix the errors, but I had to proceed with two unresolved:
+    Unresolvable Issue 1:
+        Fail: Database: missing index (config/uniqueindex_configname)
+        Fail: We have detected that your database schema may be wrong, please report the following to us on IRC or the community site (https://t.libren.ms/5gscd):
+        Fix: run te following SQL statements to fix.
+            ALTER TABLE `config` ADD UNIQUE `uniqueindex_configname` (`config_name`);
+
+        When running this I got:
+            ERROR 1062 (23000): Duplicate entry 'alert.admins' for key 'uniqueindex_configname'
+
+    Unresolvable Issue 2:
+        Fail: fping6 should have CAP_NET_RAW capability (getcap) or suid. Selinux exclusions may be required. ((null): can't create raw socket (must run as root?) : Permission denied)
+        Fail: fping6 should have CAP_NET_RAW!
+        Fix: setcap cap_net_raw+ep /usr/bin/fping6
+
+        When running this I got:
+            Failed to set capabilities on file `/usr/bin/fping6' (Invalid argument)
+            The value of the capability argument is not permitted for a file. Or the file is not a regular (non-symlink) file
+
+Note:   
+    When adding nets to librenms config, I believe that the net should be "172.Y.0.0/16", not "172.2Y.0.0/16"
+
+Note:
+    Could not create rule "Devices up/down"
+    When attempting to import from "devices.status equal" I cannot leave the value field blank as instructed
+
+
