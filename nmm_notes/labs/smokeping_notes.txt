@@ -1,0 +1,12 @@
+Note:
+    I am assuming that on the second line, "connect to your PC" is referring to hostX.campusY.ws.nsrc.org
+
+Note:
+    Google.org should be google.com
+
+Note:
+    menu for facebook http remote should be Facebook, not Network Startup Resource Center
+
+Note:
+    s1.ws.nsrc.org failing DNS probe but dig returns.
+
