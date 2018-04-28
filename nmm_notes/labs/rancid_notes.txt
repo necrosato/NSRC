@@ -1,0 +1,36 @@
+Note:
+    I was not able to simply
+        $ apt-get install rancid
+    I first had to 
+        $ apt-get update && apt-get upgrade
+
+Note:
+    There are steps for creating a rancid user, but a rancid user already exists
+
+Note:
+    file /var/lib/rancid/.cloginrc did not previously exist.
+
+Typo: Section 4.1
+    We are adding three lines to the above file, not two
+
+Note: 
+    Not sure what XX is (server number?) in 
+        bdr1.campusY(config)# interface LoopbackXX      (replace XX with your server number)
+    I used 1, (bdr1)
+
+Issue:
+    Rancid cannot ssh into core1
+        '''
+        rancid@host1:/home/sysadm$ /var/lib/rancid/bin/clogin core1.campus1.ws.nsrc.org
+        core1.campus1.ws.nsrc.org
+        spawn ssh -c 3des-cbc -x -l nmmlab core1.campus1.ws.nsrc.org
+        Unable to negotiate with 2001:db8:1::2 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
+
+        Error: Couldn't login: core1.campus1.ws.nsrc.org
+        '''
+    Resolution: Do the following from root@hostX.campusY.ws.nsrc.org
+        # vim /etc/ssh_config
+        add the following to the end of the file
+            KexAlgorithms +diffie-hellman-group1-sha1
+        # systemctl restart ssh
+
